@@ -1,0 +1,206 @@
+.layout {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    background-color: #193064; /* أزرق غامق موحد */
+    position: relative;
+    overflow-x: hidden;
+}
+
+.layout-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    position: relative;
+    z-index: 2;
+}
+
+.layout-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.layout-logo-wrapper:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.layout-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+    transition: filter 0.4s ease;
+}
+
+.layout-logo-wrapper:hover .layout-logo-image {
+    filter: drop-shadow(0 12px 32px rgba(251, 191, 36, 0.5));
+}
+
+.layout-logo-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(251, 191, 36, 0.4) 0%, 
+        rgba(251, 191, 36, 0.2) 40%,
+        transparent 70%);
+    z-index: 1;
+    animation: layoutLogoGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes layoutLogoGlow {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.layout-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    padding-top: max(var(--spacing-md), env(safe-area-inset-top));
+    padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom));
+    padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+    padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.layout-footer {
+    background: rgba(25, 48, 100, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(251, 191, 36, 0.2);
+    padding: 1.5rem var(--spacing-md);
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.4));
+    animation: footerIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes footerIconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.footer-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.footer-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.footer-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fbbf24;
+    text-shadow: 
+        0 0 15px rgba(245, 158, 11, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.5px;
+}
+
+/* تحسينات للهواتف المحمولة */
+@media (max-width: 480px) {
+    .layout-logo-container {
+        margin-bottom: 1.5rem;
+        padding-top: max(0.25rem, env(safe-area-inset-top));
+    }
+
+    .layout-logo-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .layout-main {
+        padding: 1rem;
+        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+
+    .layout-footer {
+        padding: 1.25rem 1rem;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+    }
+
+    .footer-content {
+        gap: 0.75rem;
+    }
+
+    .footer-icon {
+        font-size: 1.75rem;
+    }
+
+    .footer-label {
+        font-size: 0.9rem;
+    }
+
+    .footer-name {
+        font-size: 1.2rem;
+    }
+}
+
+/* تحسينات خاصة لـ iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .layout {
+        min-height: -webkit-fill-available;
+    }
+    
+    .layout-main {
+        min-height: -webkit-fill-available;
+    }
+}

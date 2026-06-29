@@ -1,0 +1,643 @@
+/* ============================================
+   Welcome Screen - Modern Minimal Design
+   ============================================ */
+
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* ============================================
+   Animated Background
+   ============================================ */
+
+.animated-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-particle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+    animation: particleFloat 20s ease-in-out infinite;
+    filter: blur(40px);
+}
+
+.bg-particle:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.bg-particle:nth-child(2) {
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+    width: 250px;
+    height: 250px;
+}
+
+.bg-particle:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 10s;
+    width: 200px;
+    height: 200px;
+}
+
+.bg-particle:nth-child(4) {
+    top: 30%;
+    right: 30%;
+    animation-delay: 7s;
+    width: 180px;
+    height: 180px;
+}
+
+.bg-particle:nth-child(5) {
+    bottom: 40%;
+    right: 10%;
+    animation-delay: 12s;
+    width: 220px;
+    height: 220px;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(20px, 30px) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   Gradient Overlay
+   ============================================ */
+
+.gradient-overlay {
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.06) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   Loading Animation
+   ============================================ */
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #193064;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(251, 191, 36, 0.2);
+    border-top-color: #fbbf24;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Content Wrapper with Fade-in Animation
+   ============================================ */
+
+.welcome-content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.welcome-content-wrapper.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome-content-wrapper.loaded .welcome-main-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   Single Main Card Design
+   ============================================ */
+
+.welcome-main-card {
+    background: rgba(25, 48, 100, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    padding: 2.5rem 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(251, 191, 36, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.welcome-main-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(251, 191, 36, 0.05) 0%, 
+        transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.welcome-main-card:hover::before {
+    opacity: 1;
+}
+
+.welcome-main-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(251, 191, 36, 0.3);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(251, 191, 36, 0.25),
+        0 0 30px rgba(251, 191, 36, 0.15);
+}
+
+/* ============================================
+   Logo - بدون حاوية بيضاء
+   ============================================ */
+
+.welcome-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.welcome-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+    transition: filter 0.4s ease;
+}
+
+.welcome-logo:hover .logo-image {
+    filter: drop-shadow(0 12px 32px rgba(251, 191, 36, 0.5));
+}
+
+.logo-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(251, 191, 36, 0.4) 0%, 
+        rgba(251, 191, 36, 0.2) 40%,
+        transparent 70%);
+    z-index: 1;
+    animation: logoGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes logoGlow {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* ============================================
+   Content
+   ============================================ */
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    margin: 0 0 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.welcome-title-line1 {
+    color: #e2e8f0;
+    display: block;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.welcome-title-line2 {
+    color: #fbbf24;
+    display: block;
+    text-shadow: 
+        0 0 25px rgba(245, 158, 11, 0.7),
+        0 0 50px rgba(245, 158, 11, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.welcome-title-line3 {
+    margin-top: 0.35rem;
+    color: #cbd5e1;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.welcome-subtitle {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    font-weight: 500;
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    margin: 0;
+    letter-spacing: -0.3px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* ============================================
+   Start Button
+   ============================================ */
+
+.start-dots {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.start-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fbbf24;
+    box-shadow: 
+        0 0 15px rgba(245, 158, 11, 1),
+        0 0 30px rgba(245, 158, 11, 0.6),
+        inset 0 0 6px rgba(255, 255, 255, 0.5);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+.start-dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.start-dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.8;
+    }
+}
+
+.start-button {
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    padding: 1.25rem 2rem;
+    min-height: 60px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.start-button:hover::before {
+    opacity: 1;
+}
+
+.start-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(37, 99, 235, 0.6),
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.start-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.start-button .button-icon {
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.start-button:hover .button-icon {
+    transform: translateX(3px);
+}
+
+/* ============================================
+   Manager Button
+   ============================================ */
+
+.manager-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.manager-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, 
+        rgba(251, 191, 36, 0.2) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.manager-button:hover::after {
+    opacity: 1;
+}
+
+.manager-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(245, 158, 11, 0.3),
+        0 0 0 1px rgba(245, 158, 11, 0.4);
+}
+
+.manager-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.manager-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.manager-button:hover .manager-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ============================================
+   Parallax Effect
+   ============================================ */
+
+.welcome-screen {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .welcome-logo-card {
+        will-change: transform;
+    }
+    
+    .welcome-content-card {
+        will-change: transform;
+    }
+}
+
+/* ============================================
+   Mobile Optimizations
+   ============================================ */
+
+@media (max-width: 480px) {
+    .welcome-screen {
+        padding: 1.5rem 1rem;
+        min-height: -webkit-fill-available;
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+
+    .welcome-content-wrapper {
+        max-width: 100%;
+    }
+
+    .welcome-main-card {
+        padding: 2rem 1.5rem;
+        border-radius: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .welcome-logo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .welcome-title {
+        font-size: 1.75rem;
+        line-height: 1.4;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .start-button {
+        font-size: 1rem;
+        padding: 1.1rem 1.5rem;
+        min-height: 56px;
+    }
+
+    .manager-button {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.5rem;
+        min-height: 52px;
+    }
+
+    /* Swipe gesture hint */
+    .welcome-screen::after {
+        content: '← اسحب للبدء';
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(251, 191, 36, 0.6);
+        font-size: 0.85rem;
+        animation: swipeHint 2s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 100;
+    }
+}
+
+@keyframes swipeHint {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-50%) translateX(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateX(-10px);
+    }
+}
+
+/* ============================================
+   iOS Safari Specific
+   ============================================ */
+
+@supports (-webkit-touch-callout: none) {
+    .welcome-screen {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* ============================================
+   Very Small Screens
+   ============================================ */
+
+@media (max-width: 360px) {
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+
+    .welcome-logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .start-button {
+        font-size: 0.95rem;
+        padding: 1rem 1.25rem;
+        min-height: 52px;
+    }
+}
+
+/* ============================================
+   Accessibility & Performance
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .animated-background,
+    .bg-particle,
+    .logo-glow,
+    .start-dot,
+    .loading-spinner {
+        animation: none;
+    }
+
+    .welcome-content-wrapper {
+        transition: none;
+    }
+
+    .welcome-logo:hover {
+        transform: none;
+    }
+}
+
+/* ============================================
+   Touch Feedback
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    .start-button:active,
+    .manager-button:active {
+        transform: scale(0.95);
+    }
+
+    .welcome-logo:active {
+        transform: scale(1.05);
+    }
+}

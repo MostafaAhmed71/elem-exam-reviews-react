@@ -1,0 +1,212 @@
+.grade-selection {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+}
+
+/* Header */
+.grade-header {
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.grade-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.grade-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.grade-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.grade-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+    transition: filter 0.4s ease;
+}
+
+.grade-logo:hover .grade-logo-image {
+    filter: drop-shadow(0 12px 32px rgba(251, 191, 36, 0.5));
+}
+
+.grade-logo-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(251, 191, 36, 0.4) 0%, 
+        rgba(251, 191, 36, 0.2) 40%,
+        transparent 70%);
+    z-index: 1;
+    animation: gradeLogoGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes gradeLogoGlow {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.grade-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.grade-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fbbf24;
+    text-shadow: 
+        0 0 20px rgba(251, 191, 36, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.grade-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grade-header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .grade-title-wrapper {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .grade-title {
+        white-space: normal;
+        font-size: 1.3rem;
+    }
+
+    .grade-logo {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Grid */
+.grade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Grade Card with solid color background */
+.grade-card {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        0 4px 10px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.grade-card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.grade-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    transition: all 0.3s ease;
+    text-align: center;
+    padding: 0.5rem 0;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.grade-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        0 6px 15px rgba(0, 0, 0, 0.4),
+        0 0 30px currentColor,
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.grade-card:hover .grade-name {
+    text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.grade-arrow {
+    position: absolute;
+    bottom: -40px;
+    font-size: 2rem;
+    color: #ffffff;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.grade-card:hover .grade-arrow {
+    bottom: -10px;
+    opacity: 1;
+}
+
+/* Grade Colors - subtle gradients for each card if needed, 
+   or just let the icon color pop against the dark glass */

@@ -1,0 +1,707 @@
+/* Import Tajawal font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+:root {
+  /* Premium Dark Palette */
+  --primary-color: #3b82f6;
+  /* Bright Blue */
+  --primary-dark: #1d4ed8;
+  --primary-glow: rgba(59, 130, 246, 0.5);
+
+  /* Button component variables */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-white: #ffffff;
+
+  --accent-color: #fbbf24;
+  /* ذهبي/أصفر */
+  --accent-glow: rgba(245, 158, 11, 0.5);
+
+  /* Backgrounds */
+  --bg-deep: #193064;
+  /* أزرق غامق موحد */
+  --bg-surface: rgba(25, 48, 100, 0.8);
+  /* خلفية السطوح */
+  --bg-surface-hover: rgba(51, 65, 85, 0.7);
+
+  /* Glassmorphism */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-blur: blur(20px);
+
+  /* Text */
+  --text-primary: #ffffff;
+  /* نص أساسي */
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  /* نص ثانوي */
+  --color-text-light: rgba(255, 255, 255, 0.5);
+
+  /* Colors */
+  --color-light-gray: rgba(255, 255, 255, 0.1);
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #fbbf24;
+  --color-info: #3b82f6;
+
+  /* Spacing & Radius */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+  --spacing-3xl: 3rem;
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(251, 191, 36, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
+  --safe-area-inset-right: env(safe-area-inset-right);
+
+  /* Fonts */
+  --font-family: 'Tajawal', 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background-color: #193064; /* نفس لون Layout - موحد */
+  height: 100%;
+  /* iOS Safari fix */
+  height: -webkit-fill-available;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #193064; /* نفس لون Layout - موحد */
+  color: var(--text-primary);
+  direction: rtl;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+  position: relative;
+  /* iOS Safari fixes */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+  }
+
+
+#root {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+  background-color: #193064; /* نفس لون Layout - موحد */
+}
+
+/* Typography Enhancements */
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.text-gradient {
+  color: #fbbf24; /* لون ذهبي ثابت */
+  text-shadow: 
+    0 0 20px rgba(245, 158, 11, 0.6),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Modern Glass Card Utility */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-xl);
+}
+
+/* Button Resets & Base Styles */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* iOS Safari Specific Improvements */
+@supports (-webkit-touch-callout: none) {
+  /* Prevent text selection on tap */
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Allow text selection in inputs and textareas */
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Improve touch scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix for fixed elements on iOS */
+  .layout {
+    position: relative;
+  }
+  
+  /* Prevent zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Better touch targets for mobile */
+  button,
+  .button,
+  .btn,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  *:hover {
+    transition: none;
+  }
+}
+
+/* ============================================
+   الأنيميشن والتأثيرات الحركية من دليل التصميم
+   ============================================ */
+
+/* 1. الدوران (Spin) */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* 2. الانزلاق من الأعلى (Slide In Down) */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. الانزلاق من الأسفل (Slide In Up) */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4. الانزلاق من الجانب (Slide In) */
+@keyframes questionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* 5. التوهج (Glow) */
+@keyframes titleGlow {
+  from {
+    text-shadow: 
+      0 0 20px rgba(251, 191, 36, 0.5),
+      0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  to {
+    text-shadow: 
+      0 0 30px rgba(251, 191, 36, 0.8),
+      0 2px 15px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(251, 191, 36, 0.3);
+  }
+}
+
+/* 6. اللمعان (Shine) */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 7. التدفق (Flow) */
+@keyframes borderFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 8. القفز (Bounce) */
+@keyframes questionIconBounce {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-50%) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-50%) rotate(10deg);
+  }
+}
+
+/* 9. تدفق شريط التقدم (Progress Flow) */
+@keyframes progressShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes progressFlow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 10. تحريك الخلفية (Background Shift) */
+@keyframes backgroundShift {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   فئات CSS المساعدة (Utility Classes)
+   ============================================ */
+
+/* بطاقة محسنة */
+.card-enhanced {
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 30px rgba(251, 191, 36, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #60a5fa,
+    #fbbf24,
+    #f59e0b
+  );
+  background-size: 200% 100%;
+  animation: borderFlow 3s infinite;
+}
+
+/* حدود متوهجة */
+.border-glow {
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  box-shadow: 
+    0 0 20px rgba(251, 191, 36, 0.3),
+    inset 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+/* ظل محسن */
+.shadow-enhanced {
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(251, 191, 36, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* نص محسن */
+.text-enhanced {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(251, 191, 36, 0.2);
+}
+
+/* عنوان بظل */
+.heading-shadow {
+  text-shadow: 
+    0 0 20px rgba(251, 191, 36, 0.6),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* تأثير رفع عند hover */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(251, 191, 36, 0.2);
+}
+
+/* تأثير ripple */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple-effect:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* تأثير زجاجي */
+.glass-effect {
+  background: rgba(25, 48, 100, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* فئات الألوان */
+.success { 
+  color: #10b981; 
+}
+
+.bg-success { 
+  background: rgba(16, 185, 129, 0.2); 
+}
+
+.error { 
+  color: #ef4444; 
+}
+
+.bg-error { 
+  background: rgba(239, 68, 68, 0.2); 
+}
+
+.warning { 
+  color: #fbbf24; 
+}
+
+.bg-warning { 
+  background: rgba(251, 191, 36, 0.2); 
+}
+
+.info { 
+  color: #3b82f6; 
+}
+
+.bg-info { 
+  background: rgba(59, 130, 246, 0.2); 
+}
+
+/* خلفية متحركة */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: backgroundShift 20s ease-in-out infinite;
+}
+
+/* نمط هندسي بالنقاط */
+.geometric-pattern-dots {
+  background-image: 
+    radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.3;
+}
+
+/* خلفية زجاجية */
+.glass-background {
+  background: rgba(25, 48, 100, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* شريط التقدم */
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #60a5fa,
+    #fbbf24,
+    #f59e0b
+  );
+  background-size: 200% 100%;
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 0 15px rgba(251, 191, 36, 0.6),
+    0 0 30px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: progressShine 2s infinite;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: progressFlow 2s infinite;
+}
+
+/* خيارات الاختيار (Radio Options) */
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.radio-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(251, 191, 36, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.radio-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(251, 191, 36, 0.4);
+  transform: translateX(5px) scale(1.02);
+  box-shadow: 
+    0 4px 15px rgba(251, 191, 36, 0.2),
+    0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.radio-option:hover::before {
+  left: 100%;
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 
+    0 0 20px rgba(251, 191, 36, 0.3),
+    inset 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+/* حقول الإدخال المحسنة */
+.input-field {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: rgba(251, 191, 36, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 
+    0 0 0 4px rgba(251, 191, 36, 0.2),
+    0 0 20px rgba(251, 191, 36, 0.1),
+    inset 0 0 20px rgba(251, 191, 36, 0.05);
+  transform: scale(1.01);
+}
+
+.textarea {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 150px;
+  transition: all 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: rgba(251, 191, 36, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 
+    0 0 0 4px rgba(251, 191, 36, 0.2),
+    0 0 20px rgba(251, 191, 36, 0.1);
+  transform: scale(1.01);
+}
+
+/* دعم prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

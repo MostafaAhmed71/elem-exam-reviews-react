@@ -1,0 +1,380 @@
+.subject-selection {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.subject-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fbbf24;
+    text-shadow: 
+        0 0 20px rgba(251, 191, 36, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    margin: 0 0 1rem;
+    text-align: center;
+}
+
+.subject-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 2rem;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(59, 130, 246, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* Schedule Container */
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.schedule-card {
+    text-align: center;
+    padding: 2.5rem !important;
+}
+
+.schedule-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.schedule-image-wrapper {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-surface);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.schedule-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: 80vh;
+}
+
+.schedule-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--bg-surface);
+    backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-xl);
+    border: var(--glass-border);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.empty-icon {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
+}
+
+.empty-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+}
+
+.empty-hint {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Base card styles are handled by Card.css, refining internals */
+.subject-card {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem !important;
+}
+
+.subject-icon {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-card:hover .subject-icon {
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.subject-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-edit-btn {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: var(--primary-color);
+}
+
+.subject-edit-btn:hover {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.subject-delete-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+}
+
+.subject-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.subject-header-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.materials-management-button {
+    width: auto;
+    min-width: 200px;
+}
+
+.subject-message {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.subject-message.success {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    box-shadow: 
+        0 4px 15px rgba(16, 185, 129, 0.2),
+        0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+.subject-message.error {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+    box-shadow: 
+        0 4px 15px rgba(239, 68, 68, 0.2),
+        0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+/* Edit Modal */
+.edit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.edit-modal {
+    background: var(--bg-surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(251, 191, 36, 0.2);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.edit-modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fbbf24;
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f8fafc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1.5rem center;
+    padding-left: 3.5rem;
+    padding-right: 1.5rem;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: rgba(251, 191, 36, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 
+        0 0 0 4px rgba(251, 191, 36, 0.2),
+        0 0 20px rgba(251, 191, 36, 0.1),
+        inset 0 0 20px rgba(251, 191, 36, 0.05);
+    transform: scale(1.01);
+}
+
+.form-select option {
+    background: #193064;
+    color: var(--text-primary);
+}
+
+.edit-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.button-icon {
+    margin-left: 0.75rem;
+    font-size: 1.25rem;
+}
+
+/* Staggered animation handled by Framer Motion in parent usually, 
+   but keeping CSS fallback if needed */
+.subject-card {
+    animation: fadeIn 0.5s ease-out backwards;
+}
+
+.subject-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.subject-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.subject-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* ... roughly ... */
+
+@media (max-width: 480px) {
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-icon {
+        font-size: 3.5rem;
+    }
+}
